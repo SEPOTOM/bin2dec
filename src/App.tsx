@@ -1,9 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 
-import { isBinaryStr } from '@/utils';
+import { convertBinaryToDecimal, isBinaryStr } from '@/utils';
 
 const App = () => {
   const [binaryNumber, setBinaryNumber] = useState('0');
+  const [decimalNumber, setDecimalNumber] = useState(0);
   const isBinary = isBinaryStr(binaryNumber);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -12,6 +13,10 @@ const App = () => {
     if (newValue.length <= 8) {
       setBinaryNumber(newValue);
     }
+  };
+
+  const handleButtonClick = () => {
+    setDecimalNumber(convertBinaryToDecimal(binaryNumber));
   };
 
   return (
@@ -25,8 +30,10 @@ const App = () => {
         />
       </label>
       {!isBinary && <div role="alert">! Please enter only 0 or 1 !</div>}
-      <button type="button">Convert</button>
-      <div role="status">The decimal alternative is: 0</div>
+      <button type="button" onClick={handleButtonClick}>
+        Convert
+      </button>
+      <div role="status">The decimal alternative is: {decimalNumber}</div>
     </>
   );
 };
