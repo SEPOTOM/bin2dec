@@ -12,6 +12,12 @@ describe('App', () => {
     ).toBeInTheDocument();
   });
 
+  it('should display the output area with a default value of 0', () => {
+    render(<App />);
+
+    expect(screen.getByRole('status')).toHaveTextContent(/0/i);
+  });
+
   it('should prohibit the user from entering more than 8 digits', async () => {
     const { user } = renderWithUser(<App />);
 
