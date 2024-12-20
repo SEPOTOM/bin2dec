@@ -25,6 +25,7 @@ const App = () => {
         />
       </label>
       {!isBinary && <div role="alert">! Please enter only 0 or 1 !</div>}
+      <button type="button">Convert</button>
       <div role="status">The decimal alternative is: 0</div>
     </>
   );
