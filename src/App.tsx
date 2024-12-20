@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 
+import { isBinaryStr } from '@/utils';
+
 const App = () => {
   const [binaryNumber, setBinaryNumber] = useState('0');
-  const isBinary = binaryNumber
-    .split('')
-    .every((digit) => digit === '0' || digit === '1');
+  const isBinary = isBinaryStr(binaryNumber);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
