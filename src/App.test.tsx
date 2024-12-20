@@ -18,6 +18,14 @@ describe('App', () => {
     expect(screen.getByRole('status')).toHaveTextContent(/0/i);
   });
 
+  it('should display a convert button', () => {
+    render(<App />);
+
+    expect(
+      screen.getByRole('button', { name: /convert/i }),
+    ).toBeInTheDocument();
+  });
+
   it('should prohibit the user from entering more than 8 digits', async () => {
     const { user } = renderWithUser(<App />);
 
