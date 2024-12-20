@@ -1,3 +1,4 @@
+import { convertBinaryToDecimal } from '@/utils/converters';
 import { isBinaryStr } from '@/utils/strings';
 
-export { isBinaryStr };
+export { convertBinaryToDecimal, isBinaryStr };
