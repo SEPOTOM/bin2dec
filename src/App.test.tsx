@@ -34,6 +34,14 @@ describe('App', () => {
     expect(screen.getByRole('alert')).toBeInTheDocument();
   });
 
+  it('should disable the convert button if anything other than a 0 or 1 was entered', async () => {
+    const { user } = renderWithUser(<App />);
+
+    await user.type(screen.getByRole('spinbutton', { name: /input/i }), '5');
+
+    expect(screen.getByRole('button', { name: /convert/i })).toBeDisabled();
+  });
+
   describe('should correctly convert binary input to decimal output when clicking the convert button', () => {
     const inputs = ['1001', '11100', '11111111', '1', '0'];
     const outputs = ['9', '28', '255', '1', '0'];
