@@ -34,7 +34,8 @@ const App = () => {
       <button
         type="button"
         onClick={handleButtonClick}
-        className="rounded-md border-4 border-main p-2 text-xl font-black uppercase text-main transition-colors hover:bg-main hover:text-secondary active:border-main-dark active:bg-main-dark active:text-secondary active:transition-none"
+        disabled={!isBinary}
+        className="rounded-md border-4 border-main p-2 text-xl font-black uppercase text-main transition-colors hover:bg-main hover:text-secondary active:border-main-dark active:bg-main-dark active:text-secondary active:transition-none disabled:border-disabled disabled:bg-disabled disabled:text-secondary"
       >
         Convert
       </button>
