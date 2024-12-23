@@ -8,11 +8,7 @@ const App = () => {
   const isBinary = isBinaryStr(binaryNumber);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-
-    if (newValue.length <= 8) {
-      setBinaryNumber(newValue);
-    }
+    setBinaryNumber(e.target.value);
   };
 
   const handleButtonClick = () => {
