@@ -16,21 +16,38 @@ const App = () => {
   };
 
   return (
-    <>
-      <label>
+    <div className="mx-auto flex h-full max-w-5xl flex-col justify-center gap-y-3 p-3">
+      <label className="flex flex-col gap-y-2 text-xl font-bold text-main">
         Input (a binary number):{' '}
         <input
           type="number"
           value={binaryNumber}
           onChange={handleInputChange}
+          className="outline-focus w-full bg-main p-2 text-3xl tracking-wider text-secondary"
         />
       </label>
-      {!isBinary && <div role="alert">! Please enter only 0 or 1 !</div>}
-      <button type="button" onClick={handleButtonClick}>
+      {!isBinary && (
+        <div role="alert" className="text-md text-center font-bold text-error">
+          ! Please enter only 0 or 1 !
+        </div>
+      )}
+      <button
+        type="button"
+        onClick={handleButtonClick}
+        className="rounded-md border-4 border-main p-2 text-xl font-black uppercase text-main transition-colors hover:bg-main hover:text-secondary active:border-main-dark active:bg-main-dark active:text-secondary active:transition-none"
+      >
         Convert
       </button>
-      <div role="status">The decimal alternative is: {decimalNumber}</div>
-    </>
+      <div
+        role="status"
+        className="flex flex-col items-center gap-y-1 text-xl font-bold text-main md:gap-y-3"
+      >
+        The decimal alternative is:{' '}
+        <span className="text-center text-3xl md:text-5xl">
+          {decimalNumber}
+        </span>
+      </div>
+    </div>
   );
 };
 
