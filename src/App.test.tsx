@@ -42,6 +42,18 @@ describe('App', () => {
     expect(screen.getByRole('button', { name: /convert/i })).toBeDisabled();
   });
 
+  it('should format the output if it is too long', async () => {
+    const { user } = renderWithUser(<App />);
+
+    await user.type(
+      screen.getByRole('spinbutton', { name: /input/i }),
+      '1'.repeat(10),
+    );
+    await user.click(screen.getByRole('button', { name: /convert/i }));
+
+    expect(screen.getByRole('status')).toHaveTextContent(/1 023/i);
+  });
+
   describe('should allow the user to enter only digits', () => {
     const forbiddenSymbols = ['.', ',', '+', '-', 'e'];
 
