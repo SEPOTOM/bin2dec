@@ -34,6 +34,36 @@ describe('App', () => {
     expect(screen.getByRole('alert')).toBeInTheDocument();
   });
 
+  describe('should allow the user to delete entered digits', () => {
+    it('using Backspace', async () => {
+      const { user } = renderWithUser(<App />);
+      await user.type(
+        screen.getByRole('spinbutton', { name: /input/i }),
+        '111',
+      );
+
+      await user.keyboard('{Backspace}');
+
+      expect(
+        screen.getByRole('spinbutton', { name: /input/i }),
+      ).toHaveDisplayValue('11');
+    });
+
+    it('using Delete', async () => {
+      const { user } = renderWithUser(<App />);
+      await user.type(
+        screen.getByRole('spinbutton', { name: /input/i }),
+        '101',
+      );
+
+      await user.keyboard('{ArrowLeft}{Delete}');
+
+      expect(
+        screen.getByRole('spinbutton', { name: /input/i }),
+      ).toHaveDisplayValue('10');
+    });
+  });
+
   it('should disable the convert button if anything other than a 0 or 1 was entered', async () => {
     const { user } = renderWithUser(<App />);
 
