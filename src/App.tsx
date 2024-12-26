@@ -14,7 +14,9 @@ const App = () => {
   };
 
   const handleInputKeyDown = (e: KeyboardEvent) => {
-    if (!/^\d+$/.test(e.key)) {
+    const FORBIDDEN_KEYS = ['+', '-', '.', ',', 'e', 'E'];
+
+    if (FORBIDDEN_KEYS.includes(e.key)) {
       e.preventDefault();
     }
   };
