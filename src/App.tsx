@@ -1,11 +1,13 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
-import { convertBinaryToDecimal, isBinaryStr } from '@/utils';
+import { convertBinaryToDecimal, formatNumber, isBinaryStr } from '@/utils';
 
 const App = () => {
   const [binaryNumber, setBinaryNumber] = useState('0');
   const [decimalNumber, setDecimalNumber] = useState(0);
   const isBinary = isBinaryStr(binaryNumber);
+
+  const formattedDecimalNumber = formatNumber(decimalNumber);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBinaryNumber(e.target.value);
@@ -52,7 +54,7 @@ const App = () => {
       >
         The decimal alternative is:{' '}
         <span className="text-center text-3xl md:text-5xl">
-          {decimalNumber}
+          {formattedDecimalNumber}
         </span>
       </div>
     </div>
