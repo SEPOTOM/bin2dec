@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 import { convertBinaryToDecimal, isBinaryStr } from '@/utils';
 
@@ -9,6 +9,12 @@ const App = () => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBinaryNumber(e.target.value);
+  };
+
+  const handleInputKeyDown = (e: KeyboardEvent) => {
+    if (!/^\d+$/.test(e.key)) {
+      e.preventDefault();
+    }
   };
 
   const handleButtonClick = () => {
@@ -23,6 +29,7 @@ const App = () => {
           type="number"
           value={binaryNumber}
           onChange={handleInputChange}
+          onKeyDown={handleInputKeyDown}
           className="outline-focus w-full bg-main p-2 text-3xl tracking-wider text-secondary"
         />
       </label>
