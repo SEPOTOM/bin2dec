@@ -42,6 +42,42 @@ describe('App', () => {
     expect(screen.getByRole('button', { name: /convert/i })).toBeDisabled();
   });
 
+  describe('should allow the user to enter only digits', () => {
+    const forbiddenSymbols = ['.', ',', '+', '-', 'e'];
+
+    for (const symbol of forbiddenSymbols) {
+      it(`ignores ${symbol}`, async () => {
+        const { user } = renderWithUser(<App />);
+
+        await user.type(
+          screen.getByRole('spinbutton', { name: /input/i }),
+          symbol,
+        );
+
+        expect(
+          screen.getByRole('spinbutton', { name: /input/i }),
+        ).toHaveDisplayValue('0');
+      });
+    }
+
+    const forbiddenSymbolsWithNums = ['.2', ',2', '+2', '-2', 'e2'];
+
+    for (const symbol of forbiddenSymbolsWithNums) {
+      it(`ignores ${symbol[0]} in ${symbol}`, async () => {
+        const { user } = renderWithUser(<App />);
+
+        await user.type(
+          screen.getByRole('spinbutton', { name: /input/i }),
+          symbol,
+        );
+
+        expect(
+          screen.getByRole('spinbutton', { name: /input/i }),
+        ).toHaveDisplayValue('2');
+      });
+    }
+  });
+
   describe('should correctly convert binary input to decimal output when clicking the convert button', () => {
     const inputs = ['1001', '11100', '11111111', '1', '0'];
     const outputs = ['9', '28', '255', '1', '0'];
