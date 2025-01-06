@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
+# Bin2Dec
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Binary to decimal converter.
 
-Currently, two official plugins are available:
+Inspired by [Bin2Dec](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Bin2Dec-App.md)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## User Stories
 
-## Expanding the ESLint configuration
+- [x] User can enter up to 8 binary digits in one input field
+- [x] User must be notified if anything other than a 0 or 1 was entered
+- [x] User views the results in a single output field containing the decimal (base 10) equivalent of the binary number that was entered
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Bonus features
 
-- Configure the top-level `parserOptions` property like this:
+- [x] User can enter a variable number of binary digits
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+## Additional features
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+- [x] User can enter only digits
+- [x] The output if formatted like **1 000 000**
+- [x] The convert button is disabled if anything other than a 0 or 1 was entered
